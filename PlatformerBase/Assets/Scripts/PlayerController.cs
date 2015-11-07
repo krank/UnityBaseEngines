@@ -56,7 +56,11 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
 
         // Apply the movement as a velocity
+
+        //playerRigidBody.MovePosition(new Vector2(playerRigidBody.position.x + moveX * Time.deltaTime, playerRigidBody.position.y));
+
         playerRigidBody.velocity = new Vector2(moveX * maxSpeed, playerRigidBody.velocity.y);
+
 
 
 
