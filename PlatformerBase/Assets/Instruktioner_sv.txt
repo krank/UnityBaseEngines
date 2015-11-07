@@ -24,4 +24,4 @@ Enklast: Utgå från AvatarBase.
 
 7. Gå in i AvatarAnimatorController. Klicka på rutan för "Idle" och välj din idle-animation som "Motion". Gör motsvarande med Walking, Falling och Jumping.
 
-8. Systemet förutsätter (just nu) att du bara har animetioner där avataren går/hoppar/faller åt höger. 
+8. Systemet förutsätter (just nu) att du bara har animationer där avataren går/hoppar/faller åt höger. 
