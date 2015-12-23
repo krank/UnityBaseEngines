@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
 
-    public float maxSpeed = 10f;
+    public float maxSpeed = 100f;
     public float jumpForce = 700f;
     public bool flipForLeft = true;
     public Transform groundCheck;
@@ -20,11 +21,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRigidBody;
     Animator playerAnimator;
 
+
+
     // Use this for initialization
     void Start()
     {
         playerRigidBody = this.GetComponent<Rigidbody2D>();
         playerAnimator = this.GetComponent<Animator>();
+
     }
 
     void Update()
@@ -41,12 +45,12 @@ public class PlayerController : MonoBehaviour
         {
             hasReleasedJumpButton = true;
         }
-
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         playerAnimator.SetBool("grounded", grounded);
 
@@ -56,14 +60,8 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
 
         // Apply the movement as a velocity
-
-        //playerRigidBody.MovePosition(new Vector2(playerRigidBody.position.x + moveX * Time.deltaTime, playerRigidBody.position.y));
-
-        playerRigidBody.velocity = new Vector2(moveX * maxSpeed, playerRigidBody.velocity.y);
-
-
-
-
+        playerRigidBody.velocity = new Vector2(moveX * maxSpeed * Time.fixedDeltaTime, playerRigidBody.velocity.y);
+        
         // Update the animator
         if (moveX == 0)
         {
@@ -91,7 +89,7 @@ public class PlayerController : MonoBehaviour
             }
             playerAnimator.SetInteger("direction", facing);
         }
-
+        
     }
 
 

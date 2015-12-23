@@ -2,26 +2,14 @@ PROJEKTET
 Inställning jag gjort: Gravitation c:a 30, för effektfullare hopp.
 
 BANAN
-Enklast: Använd "Ground"-prefaben och stretcha/rotera/etc för att blocka ut, lägg sedan annat ovanpå.
-
-Klurigare: Skapa marken på valfritt sätt. Lägg till colliders efter behov. Kom ihåg att lägga till PhysicsMaterial. Ge alla markobjekt lagret "Ground".
+Skapa banan på valfritt sätt. Om du använder 3d-objekt, ta bort deras vanliga colliders och lägg in 2d-colliders istället.,
 
 AVATAREN
-Enklast: Utgå från AvatarBase.
+Avataren behöver:
+- PlayerController-scriptet
+- En RigidBody2D
+- En eller flera 2d-colliders som ges fysikmaterialet "PlayerMaterial". Detta hindrar att avataren fastnar i väggar.
+- Ett GameObject att använda för "ground check". Bara att skapa inuti avatarobjektet och dra in till scriptets "ground check"-slot. Groundchecken bör vara tom i övrigt och vara placerad vid avatarens fötter.
+- En AnimationController, förslagsvis AvatarAnimationController eller en kopia av den. Scriptet ändrar de parametrar som finns med i den controllern.
 
-1. Importera sprite sheets och klipp upp dem.
-
-2. Skapa en avatar, förslagsvis från prefaben AvatarBase som redan innehåller allt som behövs.
-
-3. Välj en sprite i Sprite Renderer. Förslag: Idle.
-
-4. Justera collidern. Lägg till en box collider om avataren ska vara mer långsmal.
-
-5. Gå till Animation, med AvatarBase markerad.
-5.1. Skapa ett nytt animationsklipp. Döp till Idle. Lägg till bilden/bilderna för idle. 
-5.2. Skapa ytterligare ett animationsklipp. Döp till Walking. Lägg till bilderna för walking.
-5.3. Gör motsvarande för Jumping och Falling.
-
-7. Gå in i AvatarAnimatorController. Klicka på rutan för "Idle" och välj din idle-animation som "Motion". Gör motsvarande med Walking, Falling och Jumping.
-
-8. Systemet förutsätter (just nu) att du bara har animationer där avataren går/hoppar/faller åt höger. 
+Kolla gärna exemplen i DemoScene och DemoScene3D
